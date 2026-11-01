@@ -1,0 +1,1734 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laboratoire Scientifique Eco2Nature · Professeure Flora</title>
+    <meta name="description" content="Découvre le transport de l'eau dans les plantes, la capillarité et le xylème avec la Professeure Flora dans son laboratoire interactif." />
+    <meta property="og:title" content="Laboratoire Scientifique Eco2Nature · Professeure Flora" />
+    <meta property="og:description" content="Découvre la capillarité et les pailles microscopiques du xylème avec la Professeure Flora !" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS INTÉGRAL AUTONOME DANS LA BALISE <style> (SANS DÉPENDANCES EXTERNES) -->
+    <style>
+      :root {
+        --bg-main: #070e17;
+        --bg-header: #0c1622;
+        --bg-card: #0f1c2c;
+        --bg-card-sub: #08111d;
+        --border-color: #1e293b;
+        --border-subtle: #172436;
+        --text-primary: #f1f5f9;
+        --text-secondary: #94a3b8;
+        --text-muted: #64748b;
+        --emerald-400: #34d399;
+        --emerald-500: #10b981;
+        --emerald-600: #059669;
+        --emerald-950: #022c22;
+        --sky-400: #38bdf8;
+        --sky-500: #0ea5e9;
+        --sky-600: #0284c7;
+        --sky-950: #082f49;
+        --amber-400: #fbbf24;
+        --amber-500: #f59e0b;
+        --amber-950: #451a03;
+        --rose-500: #f43f5e;
+        --rose-600: #e11d48;
+        --rose-950: #4c0519;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background-color: var(--bg-main);
+        color: var(--text-primary);
+        line-height: 1.5;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      h1, h2, h3, h4, .font-display {
+        font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+      }
+
+      /* LAYOUT CONTAINERS */
+      .container {
+        max-width: 1280px;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+      }
+
+      /* HEADER & NAVIGATION */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        background-color: rgba(12, 22, 34, 0.95);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+      }
+
+      .header-content {
+        height: 4rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .brand-icon {
+        width: 2.25rem;
+        height: 2.25rem;
+        border-radius: 0.5rem;
+        background: rgba(16, 185, 129, 0.15);
+        border: 1px solid rgba(16, 185, 129, 0.35);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+      }
+
+      .brand-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #ffffff;
+        white-space: nowrap;
+      }
+
+      .brand-sub {
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: var(--emerald-400);
+      }
+
+      nav.desktop-nav {
+        display: none;
+        align-items: center;
+        gap: 1.5rem;
+      }
+
+      @media (min-width: 768px) {
+        nav.desktop-nav {
+          display: flex;
+        }
+      }
+
+      .nav-link {
+        background: none;
+        border: none;
+        color: var(--text-secondary);
+        font-size: 0.875rem;
+        font-weight: 500;
+        padding: 0.25rem 0;
+        cursor: pointer;
+        border-bottom: 2px solid transparent;
+        transition: color 0.15s, border-color 0.15s;
+        white-space: nowrap;
+      }
+
+      .nav-link:hover {
+        color: #ffffff;
+      }
+
+      .nav-link.active {
+        color: var(--emerald-400);
+        border-bottom-color: var(--emerald-400);
+        font-weight: 600;
+      }
+
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        flex-shrink: 0;
+      }
+
+      /* BUTTONS */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+        padding: 0.6rem 1.1rem;
+        border-radius: 0.5rem;
+        border: 1px solid transparent;
+        cursor: pointer;
+        transition: all 0.15s ease-in-out;
+        white-space: nowrap;
+        text-decoration: none;
+      }
+
+      .btn-sm {
+        font-size: 0.75rem;
+        padding: 0.45rem 0.85rem;
+      }
+
+      .btn-emerald {
+        background-color: var(--emerald-600);
+        color: #ffffff;
+        border-color: rgba(52, 211, 153, 0.3);
+      }
+      .btn-emerald:hover {
+        background-color: var(--emerald-500);
+        box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+      }
+
+      .btn-sky {
+        background-color: var(--sky-600);
+        color: #ffffff;
+        border-color: rgba(56, 189, 248, 0.3);
+      }
+      .btn-sky:hover {
+        background-color: var(--sky-500);
+        box-shadow: 0 0 12px rgba(14, 165, 233, 0.4);
+      }
+
+      .btn-amber {
+        background-color: var(--amber-500);
+        color: #0b1120;
+        border-color: rgba(251, 191, 36, 0.4);
+        font-weight: 700;
+      }
+      .btn-amber:hover {
+        background-color: var(--amber-400);
+        box-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
+      }
+
+      .btn-slate {
+        background-color: #172535;
+        color: var(--text-primary);
+        border-color: var(--border-color);
+      }
+      .btn-slate:hover {
+        background-color: #21354b;
+        color: #ffffff;
+      }
+
+      /* MOBILE NAVIGATION STRIP */
+      .mobile-nav-bar {
+        background-color: var(--bg-header);
+        border-bottom: 1px solid var(--border-color);
+        padding: 0.5rem 1rem;
+        display: flex;
+        gap: 0.5rem;
+        overflow-x: auto;
+      }
+
+      @media (min-width: 768px) {
+        .mobile-nav-bar {
+          display: none;
+        }
+      }
+
+      .mobile-tab-btn {
+        padding: 0.4rem 0.75rem;
+        border-radius: 0.5rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        white-space: nowrap;
+        background: #172535;
+        color: var(--text-secondary);
+        border: 1px solid var(--border-color);
+        cursor: pointer;
+      }
+
+      .mobile-tab-btn.active {
+        background: var(--emerald-600);
+        color: #ffffff;
+        border-color: var(--emerald-500);
+      }
+
+      /* CARDS & PANELS */
+      .card {
+        background-color: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 1rem;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+        margin-bottom: 2rem;
+      }
+
+      .card-header {
+        padding: 1.5rem;
+        border-bottom: 1px solid var(--border-color);
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      @media (min-width: 640px) {
+        .card-header {
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+        }
+      }
+
+      .card-header-badge {
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        display: inline-block;
+      }
+
+      .card-header-title {
+        font-size: 1.35rem;
+        font-weight: 700;
+        color: #ffffff;
+        margin-top: 0.25rem;
+      }
+
+      .card-header-desc {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        margin-top: 0.25rem;
+      }
+
+      .card-body {
+        padding: 1.5rem;
+      }
+
+      @media (min-width: 640px) {
+        .card-body {
+          padding: 2rem;
+        }
+      }
+
+      /* GRID LAYOUTS */
+      .grid-12 {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      @media (min-width: 1024px) {
+        .grid-12 {
+          grid-template-columns: repeat(12, 1fr);
+        }
+        .col-5 { grid-column: span 5; }
+        .col-7 { grid-column: span 7; }
+        .col-8 { grid-column: span 8; }
+        .col-4 { grid-column: span 4; }
+      }
+
+      /* SECTION 1: FLORA HERO */
+      .avatar-box {
+        position: relative;
+        width: 16rem;
+        height: 16rem;
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+        border: 2px solid rgba(52, 211, 153, 0.3);
+        background: #041416;
+        margin: 0 auto;
+      }
+
+      .badge-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+      }
+
+      .concept-box {
+        border-radius: 0.75rem;
+        padding: 1rem;
+        border: 1px solid transparent;
+        margin-top: 0.75rem;
+      }
+
+      .concept-box-emerald {
+        background-color: rgba(2, 44, 34, 0.4);
+        border-color: rgba(5, 150, 105, 0.4);
+      }
+
+      .concept-box-sky {
+        background-color: rgba(8, 47, 73, 0.4);
+        border-color: rgba(2, 132, 199, 0.4);
+      }
+
+      /* SECTION 2: CAPILLARY SIMULATION STAGE */
+      .stage-box {
+        background-color: #040911;
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+        border: 1px solid var(--border-color);
+        position: relative;
+        overflow: hidden;
+        min-height: 380px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+
+      .scale-ruler {
+        position: absolute;
+        left: 0.75rem;
+        top: 2rem;
+        bottom: 6.5rem;
+        width: 3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        font-size: 0.6875rem;
+        font-family: monospace;
+        color: var(--text-muted);
+        border-right: 1px solid #1e293b;
+        padding-right: 0.4rem;
+        pointer-events: none;
+      }
+
+      .tubes-area {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-end;
+        height: 240px;
+        padding: 0 1.5rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .tube-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .tube-header {
+        font-size: 0.6875rem;
+        font-family: monospace;
+        color: var(--text-secondary);
+        margin-bottom: 0.5rem;
+      }
+
+      .glass-tube {
+        background-color: rgba(255, 255, 255, 0.04);
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        border: 2px solid rgba(148, 163, 184, 0.35);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        overflow: hidden;
+        height: 13rem;
+      }
+
+      .liquid-column {
+        width: 100%;
+        transition: height 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+        position: relative;
+      }
+
+      .liquid-meniscus {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background-color: rgba(255, 255, 255, 0.6);
+        border-radius: 9999px;
+      }
+
+      .tube-footer {
+        font-size: 0.6875rem;
+        font-family: monospace;
+        color: var(--text-muted);
+        margin-top: 0.5rem;
+      }
+
+      .water-basin {
+        width: 100%;
+        height: 4rem;
+        border-bottom-left-radius: 0.5rem;
+        border-bottom-right-radius: 0.5rem;
+        border-top: 2px solid rgba(255, 255, 255, 0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        font-size: 0.75rem;
+        font-weight: 600;
+        box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.3);
+        transition: background-color 0.4s ease;
+      }
+
+      /* COLOR PICKER & SLIDER CONTROLS */
+      .color-palette-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+      }
+
+      .color-swatch-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.6rem;
+        border-radius: 0.5rem;
+        border: 1px solid var(--border-color);
+        background: #101c2a;
+        color: var(--text-secondary);
+        font-size: 0.75rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.15s ease;
+      }
+
+      .color-swatch-btn:hover {
+        background: #17283c;
+        border-color: #334e68;
+        color: #ffffff;
+      }
+
+      .color-circle {
+        width: 1rem;
+        height: 1rem;
+        border-radius: 9999px;
+        flex-shrink: 0;
+      }
+
+      .slider-control-card {
+        background-color: var(--bg-card-sub);
+        padding: 1rem;
+        border-radius: 0.75rem;
+        border: 1px solid var(--border-color);
+      }
+
+      .range-slider {
+        width: 100%;
+        accent-color: var(--emerald-500);
+        cursor: pointer;
+        margin-top: 0.5rem;
+        margin-bottom: 0.25rem;
+      }
+
+      /* SECTION 3: ANIMATIONS & MICROSCOPE */
+      @keyframes floatBubble {
+        0% { transform: translateY(100%); opacity: 0; }
+        20% { opacity: 0.8; }
+        80% { opacity: 0.9; }
+        100% { transform: translateY(-20px); opacity: 0; }
+      }
+      .bubble-1 { animation: floatBubble 2.2s linear infinite; }
+      .bubble-2 { animation: floatBubble 2.2s linear infinite 0.7s; }
+      .bubble-3 { animation: floatBubble 2.2s linear infinite 1.4s; }
+
+      .plant-canvas {
+        background: linear-gradient(to bottom, #09131d, #081d1a, #1a1309);
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+        border: 1px solid var(--border-color);
+        position: relative;
+        overflow: hidden;
+        min-height: 440px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      /* SECTION 4: TIME-LAPSE BUTTONS */
+      .timelapse-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.5rem;
+      }
+
+      .tl-btn {
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        font-size: 0.75rem;
+        font-weight: 700;
+        border: 1px solid var(--border-color);
+        background: #172535;
+        color: var(--text-secondary);
+        cursor: pointer;
+        transition: all 0.15s ease;
+      }
+
+      .tl-btn:hover {
+        background: #23374c;
+        color: #ffffff;
+      }
+
+      .tl-btn.active {
+        background: var(--rose-600);
+        color: #ffffff;
+        border-color: var(--rose-500);
+        box-shadow: 0 4px 10px rgba(225, 29, 72, 0.4);
+      }
+
+      /* SECTION 5: QUIZ & DIPLOMA */
+      .quiz-option-btn {
+        width: 100%;
+        text-align: left;
+        padding: 1rem;
+        border-radius: 0.75rem;
+        border: 1px solid var(--border-color);
+        background: rgba(16, 28, 44, 0.8);
+        color: var(--text-primary);
+        font-size: 0.875rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        transition: all 0.15s ease;
+      }
+
+      .quiz-option-btn:hover {
+        border-color: #334e68;
+        background: rgba(23, 40, 60, 0.9);
+      }
+
+      .quiz-option-btn.selected {
+        border: 2px solid var(--amber-400);
+        background: rgba(69, 26, 3, 0.4);
+        color: #fef3c7;
+        font-weight: 600;
+      }
+
+      .quiz-option-btn.correct {
+        border: 2px solid var(--emerald-500);
+        background: rgba(2, 44, 34, 0.6);
+        color: #a7f3d0;
+        font-weight: 600;
+      }
+
+      .quiz-option-btn.incorrect {
+        border: 2px solid var(--rose-500);
+        background: rgba(76, 5, 25, 0.6);
+        color: #fecdd3;
+      }
+
+      .opt-letter {
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 9999px;
+        background: #1e293b;
+        color: var(--text-secondary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+
+      /* DIPLOMA DESIGN */
+      #diploma-card {
+        background: linear-gradient(135deg, #091a16 0%, #0c1626 50%, #161208 100%);
+        padding: 2rem;
+        border-radius: 1rem;
+        border: 4px double #f59e0b;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+        position: relative;
+        text-align: center;
+        margin: 0 auto;
+      }
+
+      .diploma-ribbon {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .diploma-title {
+        font-size: 1.75rem;
+        font-weight: 800;
+        color: #ffffff;
+        margin-top: 0.25rem;
+      }
+
+      .child-name-input {
+        background: transparent;
+        border: none;
+        border-bottom: 2px solid var(--amber-400);
+        color: var(--amber-400);
+        font-size: 1.5rem;
+        font-weight: 800;
+        text-align: center;
+        outline: none;
+        padding: 0.2rem 0.5rem;
+        max-width: 280px;
+        margin-top: 0.5rem;
+      }
+
+      /* FOOTER */
+      footer {
+        background-color: var(--bg-header);
+        border-top: 1px solid var(--border-color);
+        padding: 1.5rem 0;
+        margin-top: auto;
+        font-size: 0.75rem;
+        color: var(--text-muted);
+      }
+
+      .footer-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        text-align: center;
+      }
+
+      @media (min-width: 640px) {
+        .footer-inner {
+          flex-direction: row;
+          text-align: left;
+        }
+      }
+
+      /* PRINT OPTIMIZATION (FOR PAPER PRINTERS) */
+      @media print {
+        body {
+          background-color: #ffffff !important;
+          color: #0f172a !important;
+        }
+        header, .mobile-nav-bar, .no-print, button:not(.print-keep), .tab-section:not(#section-quiz) {
+          display: none !important;
+        }
+        #quiz-diploma-box {
+          display: block !important;
+        }
+        #diploma-card {
+          background: #ffffff !important;
+          color: #0f172a !important;
+          border: 4px double #b45309 !important;
+          box-shadow: none !important;
+          padding: 3rem !important;
+        }
+        #diploma-card * {
+          color: #0f172a !important;
+        }
+        .child-name-input {
+          border-bottom-color: #b45309 !important;
+          color: #b45309 !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- TOP NAVIGATION BAR -->
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <!-- Zone 1: Brand Wordmark -->
+          <a href="#explication" onclick="switchTab('explication'); return false;" class="brand">
+            <span class="brand-icon">🌱</span>
+            <span class="brand-title font-display">
+              Eco2Nature <span class="brand-sub">· Laboratoire</span>
+            </span>
+          </a>
+
+          <!-- Zone 2: Navigation Links -->
+          <nav class="desktop-nav">
+            <button onclick="switchTab('explication')" id="nav-explication" class="nav-link active">
+              Leçon de Flora
+            </button>
+            <button onclick="switchTab('simulation')" id="nav-simulation" class="nav-link">
+              Tubes de Capillarité
+            </button>
+            <button onclick="switchTab('xyleme')" id="nav-xyleme" class="nav-link">
+              Les Pailles du Xylème
+            </button>
+            <button onclick="switchTab('celeri')" id="nav-celeri" class="nav-link">
+              Expérience Céleri
+            </button>
+            <button onclick="switchTab('quiz')" id="nav-quiz" class="nav-link" style="color: var(--amber-400);">
+              ✨ Quiz & Diplôme
+            </button>
+          </nav>
+
+          <!-- Zone 3: Actions -->
+          <div class="header-actions">
+            <button id="voice-btn" onclick="toggleVoice()" class="btn btn-emerald btn-sm">
+              <span id="voice-icon">🔊</span>
+              <span id="voice-text">Écouter Flora</span>
+            </button>
+            <button onclick="downloadSelf()" title="Télécharger ce fichier index.html autonome" class="btn btn-slate btn-sm no-print" style="display: none;">
+              <span>📥 Télécharger</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- MOBILE NAVIGATION STRIP -->
+    <div class="mobile-nav-bar">
+      <button onclick="switchTab('explication')" class="mobile-tab-btn active" data-target="explication">Leçon</button>
+      <button onclick="switchTab('simulation')" class="mobile-tab-btn" data-target="simulation">Tubes</button>
+      <button onclick="switchTab('xyleme')" class="mobile-tab-btn" data-target="xyleme">Xylème</button>
+      <button onclick="switchTab('celeri')" class="mobile-tab-btn" data-target="celeri">Céleri</button>
+      <button onclick="switchTab('quiz')" class="mobile-tab-btn" data-target="quiz">Quiz</button>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="container" style="flex: 1; padding-top: 1.5rem; padding-bottom: 2rem;">
+
+      <!-- SECTION 1: HERO & EXPLICATION DE PROFESSEURE FLORA -->
+      <section id="section-explication" class="tab-section">
+        <div class="card">
+          <div class="card-body">
+            <div class="grid-12" style="align-items: center;">
+              
+              <!-- Flora Avatar Illustration -->
+              <div class="col-5" style="text-align: center;">
+                <div class="avatar-box">
+                  <svg viewBox="0 0 240 240" style="width: 100%; height: 100%;" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="10" y="10" width="220" height="220" rx="16" fill="#07221e"/>
+                    <path d="M 20 60 L 120 20 L 220 60" stroke="#059669" stroke-width="2.5" fill="none" opacity="0.6"/>
+                    <line x1="120" y1="20" x2="120" y2="220" stroke="#059669" stroke-width="1.5" stroke-dasharray="4" opacity="0.4"/>
+                    <!-- Plants left and right -->
+                    <circle cx="45" cy="180" r="22" fill="#047857"/>
+                    <path d="M 45 150 Q 30 130 20 145 Q 40 160 45 180" fill="#10b981"/>
+                    <path d="M 45 150 Q 60 130 70 145 Q 50 160 45 180" fill="#34d399"/>
+                    <rect x="35" y="180" width="20" height="30" rx="3" fill="#78350f"/>
+                    <circle cx="195" cy="175" r="24" fill="#047857"/>
+                    <path d="M 195 145 Q 180 120 170 135 Q 190 155 195 175" fill="#10b981"/>
+                    <rect x="185" y="175" width="20" height="35" rx="3" fill="#78350f"/>
+                    <!-- Flora Character -->
+                    <circle cx="120" cy="95" r="42" fill="#382218"/>
+                    <path d="M 75 220 L 85 140 Q 120 135 155 140 L 165 220 Z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2"/>
+                    <path d="M 105 140 L 120 175 L 135 140 Z" fill="#059669"/>
+                    <circle cx="120" cy="100" r="30" fill="#fed7aa"/>
+                    <circle cx="88" cy="90" r="14" fill="#382218"/>
+                    <circle cx="152" cy="90" r="14" fill="#382218"/>
+                    <!-- Glasses & smile -->
+                    <circle cx="110" cy="98" r="9" stroke="#f59e0b" stroke-width="2.5" fill="none"/>
+                    <circle cx="130" cy="98" r="9" stroke="#f59e0b" stroke-width="2.5" fill="none"/>
+                    <line x1="119" y1="98" x2="121" y2="98" stroke="#f59e0b" stroke-width="2.5"/>
+                    <circle cx="110" cy="98" r="3" fill="#1e293b"/>
+                    <circle cx="130" cy="98" r="3" fill="#1e293b"/>
+                    <path d="M 112 114 Q 120 122 128 114" stroke="#e11d48" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                    <!-- Magnifying glass -->
+                    <line x1="150" y1="180" x2="175" y2="155" stroke="#78350f" stroke-width="5" stroke-linecap="round"/>
+                    <circle cx="178" cy="152" r="14" stroke="#38bdf8" stroke-width="3" fill="#0284c7" fill-opacity="0.4"/>
+                    <line x1="172" y1="146" x2="184" y2="158" stroke="#ffffff" stroke-width="2"/>
+                    <!-- Eco Badge -->
+                    <rect x="90" y="165" width="20" height="12" rx="2" fill="#10b981"/>
+                    <text x="93" y="174" font-size="7" font-weight="bold" fill="#ffffff">ECO</text>
+                  </svg>
+                  <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); padding: 0.75rem; text-align: left;">
+                    <div style="font-weight: 700; color: var(--emerald-400); font-size: 0.875rem;">Professeure Flora</div>
+                    <div style="font-size: 0.6875rem; color: #cbd5e1;">Botaniste · Laboratoire Eco2Nature</div>
+                  </div>
+                </div>
+
+                <div style="margin-top: 1rem;">
+                  <button onclick="readIntroSpeech()" class="btn btn-slate btn-sm" style="color: var(--emerald-400); border-color: rgba(5,150,105,0.4);">
+                    <span>🔊 Écouter l'explication vocale</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Pedagogical Content -->
+              <div class="col-7" style="display: flex; flex-direction: column; gap: 1rem;">
+                <div class="badge-pill" style="background: rgba(2, 44, 34, 0.7); color: var(--emerald-400); border: 1px solid rgba(5, 150, 105, 0.5); align-self: flex-start;">
+                  🌱 Laboratoire Scientifique Eco2Nature · Découverte Botanique
+                </div>
+
+                <h1 style="font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 800; color: #ffffff; line-height: 1.2;">
+                  Comment l'eau grimpe-t-elle dans les plantes ?
+                </h1>
+
+                <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                  « Bonjour jeune curieux ! Je suis la <strong style="color: var(--emerald-400);">Professeure Flora</strong>. 
+                  As-tu déjà remarqué que les grands arbres et les fleurs boivent l'eau du sol, mais n'ont ni pompe électrique ni moteur pour l'amener jusqu'aux feuilles tout en haut ? »
+                </p>
+
+                <!-- Point 1: Capillarité -->
+                <div class="concept-box concept-box-emerald">
+                  <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+                    <span style="background: var(--emerald-600); color: #fff; width: 1.5rem; height: 1.5rem; border-radius: 0.25rem; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700;">1</span>
+                    <h3 style="font-size: 1rem; font-weight: 700; color: #ffffff;">
+                      Le mot magique : <span style="color: var(--emerald-400); text-decoration: underline;">La Capillarité</span>
+                    </h3>
+                  </div>
+                  <p style="font-size: 0.875rem; color: #cbd5e1; padding-left: 2rem;">
+                    La <strong>capillarité</strong>, c'est la capacité étonnante de l'eau à 
+                    <strong style="color: #ffffff;">monter toute seule dans de minuscules tuyaux très fins</strong>, 
+                    même contre la gravité terrestre ! Plus le tuyau est fin, plus l'eau monte haut.
+                  </p>
+                </div>
+
+                <!-- Point 2: Le Xylème -->
+                <div class="concept-box concept-box-sky">
+                  <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+                    <span style="background: var(--sky-600); color: #fff; width: 1.5rem; height: 1.5rem; border-radius: 0.25rem; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700;">2</span>
+                    <h3 style="font-size: 1rem; font-weight: 700; color: #ffffff;">
+                      Des pailles microscopiques : <span style="color: var(--sky-400); text-decoration: underline;">Le Xylème</span>
+                    </h3>
+                  </div>
+                  <p style="font-size: 0.875rem; color: #cbd5e1; padding-left: 2rem;">
+                    Pour bien visualiser, imagine que la tige contient des millions de <strong style="color: #ffffff;">pailles microscopiques</strong>, 
+                    invisibles à l'œil nu. Exactement comme quand tu bois avec une paille ! En science, on appelle ce réseau de pailles le <strong style="color: var(--sky-400);">xylème</strong>.
+                  </p>
+                </div>
+
+                <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.5rem;">
+                  <button onclick="switchTab('simulation')" class="btn btn-emerald">
+                    Tester les tubes capillaires →
+                  </button>
+                  <button onclick="switchTab('xyleme')" class="btn btn-sky">
+                    Voir le xylème au microscope 🔬
+                  </button>
+                  <button onclick="switchTab('quiz')" class="btn btn-amber">
+                    ✨ Passer le Quiz de Flora
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: BANC D'ESSAI DES TUBES DE CAPILLARITÉ -->
+      <section id="section-simulation" class="tab-section">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <span class="card-header-badge" style="color: var(--emerald-400);">Laboratoire Virtuel · Expérience n°1</span>
+              <h2 class="card-header-title">Banc d'Essai de Capillarité : La Loi des Tubes</h2>
+              <p class="card-header-desc">Plonge des tubes de verres de différents diamètres dans l'eau colorée. Plus le tuyau est fin (comme une paille microscopique), plus l'eau monte haut !</p>
+            </div>
+            <button onclick="toggleDippedState()" id="dip-toggle-btn" class="btn btn-slate btn-sm">
+              🔄 Retirer les tubes de l'eau
+            </button>
+          </div>
+
+          <div class="card-body">
+            <div class="grid-12">
+              
+              <!-- Simulation Visual Stage -->
+              <div class="col-8 stage-box">
+                <div class="scale-ruler">
+                  <span>+10 cm</span>
+                  <span>+7.5 cm</span>
+                  <span>+5.0 cm</span>
+                  <span>+2.5 cm</span>
+                  <span>0 cm</span>
+                </div>
+
+                <div class="tubes-area">
+                  <!-- Tube 1 (Large 5mm) -->
+                  <div class="tube-wrapper">
+                    <span class="tube-header">Large (5 mm)</span>
+                    <div class="glass-tube" style="width: 3rem;">
+                      <div id="col-tube-1" class="liquid-column" style="height: 12%; background-color: var(--sky-600);">
+                        <div class="liquid-meniscus"></div>
+                      </div>
+                    </div>
+                    <span id="label-tube-1" class="tube-footer">h ≈ 0.6 cm</span>
+                  </div>
+
+                  <!-- Tube 2 (Moyen 2mm) -->
+                  <div class="tube-wrapper">
+                    <span class="tube-header">Moyen (2 mm)</span>
+                    <div class="glass-tube" style="width: 1.75rem;">
+                      <div id="col-tube-2" class="liquid-column" style="height: 28%; background-color: var(--sky-600);">
+                        <div class="liquid-meniscus"></div>
+                      </div>
+                    </div>
+                    <span id="label-tube-2" class="tube-footer">h ≈ 1.5 cm</span>
+                  </div>
+
+                  <!-- Tube 3 (Capillaire 0.5mm) -->
+                  <div class="tube-wrapper">
+                    <span class="tube-header" style="color: var(--emerald-400); font-weight: 700;">Capillaire (0.5 mm)</span>
+                    <div class="glass-tube" style="width: 0.9rem; border-color: rgba(52, 211, 153, 0.7);">
+                      <div id="col-tube-3" class="liquid-column" style="height: 65%; background-color: var(--sky-600);">
+                        <div class="liquid-meniscus"></div>
+                      </div>
+                    </div>
+                    <span id="label-tube-3" class="tube-footer" style="color: var(--emerald-400); font-weight: 700;">h ≈ 5.6 cm</span>
+                  </div>
+
+                  <!-- Tube 4 (Micro-paille réglable) -->
+                  <div class="tube-wrapper">
+                    <span id="title-tube-custom" class="tube-header" style="color: var(--amber-400); font-weight: 700;">Micro-paille (0.25 mm)</span>
+                    <div id="container-tube-custom" class="glass-tube" style="width: 8px; border-color: var(--amber-400);">
+                      <div id="col-tube-custom" class="liquid-column" style="height: 88%; background-color: var(--sky-600);">
+                        <div class="liquid-meniscus"></div>
+                      </div>
+                    </div>
+                    <span id="label-tube-custom" class="tube-footer" style="color: var(--amber-400); font-weight: 700;">h ≈ 9.2 cm</span>
+                  </div>
+                </div>
+
+                <!-- Water Basin -->
+                <div id="liquid-basin" class="water-basin" style="background-color: var(--sky-600);">
+                  <span>💧 Bassin d'eau colorée (Capillarité active)</span>
+                </div>
+              </div>
+
+              <!-- Controls Column -->
+              <div class="col-4" style="display: flex; flex-direction: column; justify-content: space-between; gap: 1.5rem;">
+                <div>
+                  <label style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-secondary); display: block; margin-bottom: 0.5rem;">
+                    1. Choisis la couleur de l'eau
+                  </label>
+                  <div class="color-palette-grid">
+                    <button onclick="changeColor('#0284c7', 'Bleu Lagon')" class="color-swatch-btn">
+                      <span class="color-circle" style="background: #0284c7;"></span>
+                      <span>Bleu Lagon</span>
+                    </button>
+                    <button onclick="changeColor('#e11d48', 'Rouge Coquelicot')" class="color-swatch-btn">
+                      <span class="color-circle" style="background: #e11d48;"></span>
+                      <span>Rouge Coquelicot</span>
+                    </button>
+                    <button onclick="changeColor('#059669', 'Vert Forêt')" class="color-swatch-btn">
+                      <span class="color-circle" style="background: #059669;"></span>
+                      <span>Vert Forêt</span>
+                    </button>
+                    <button onclick="changeColor('#7c3aed', 'Violet Myrtille')" class="color-swatch-btn">
+                      <span class="color-circle" style="background: #7c3aed;"></span>
+                      <span>Violet Myrtille</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Slider -->
+                <div class="slider-control-card">
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <label for="dia-range" style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-primary);">
+                      2. Diamètre du tube
+                    </label>
+                    <span id="dia-badge" style="font-size: 0.75rem; font-family: monospace; font-weight: 700; background: var(--emerald-950); color: var(--emerald-400); padding: 0.15rem 0.4rem; border-radius: 0.25rem; border: 1px solid rgba(5,150,105,0.4);">
+                      0.25 mm
+                    </span>
+                  </div>
+                  <input id="dia-range" type="range" min="0.10" max="2.50" step="0.05" value="0.25" oninput="updateDiameter(this.value)" class="range-slider">
+                  <div style="display: flex; justify-content: space-between; font-size: 0.6875rem; color: var(--text-muted); font-family: monospace;">
+                    <span>0.10 mm (Microscopique)</span>
+                    <span>2.50 mm (Large)</span>
+                  </div>
+                </div>
+
+                <!-- Principle -->
+                <div class="concept-box concept-box-emerald" style="margin: 0; font-size: 0.8rem;">
+                  <strong style="color: var(--emerald-400); display: block; margin-bottom: 0.25rem;">
+                    💡 La Loi physique de la Capillarité :
+                  </strong>
+                  <p style="color: var(--text-secondary); line-height: 1.4;">
+                    L'eau adhère aux parois et ses molécules se tiennent la main (cohésion). 
+                    Plus le tube est étroit, plus la surface de contact relative est grande : l'eau grimpe très haut !
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: LE XYLÈME ET LE MICROSCOPE -->
+      <section id="section-xyleme" class="tab-section">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <span class="card-header-badge" style="color: var(--sky-400);">Laboratoire Virtuel · Anatomie Végétale</span>
+              <h2 class="card-header-title">Le Xylème : Voyage à l'Intérieur de la Plante</h2>
+              <p class="card-header-desc">Suis le chemin de l'eau depuis les racines jusqu'aux feuilles à travers les millions de pailles microscopiques du xylème.</p>
+            </div>
+            <button onclick="readXylemSpeech()" class="btn btn-slate btn-sm" style="color: var(--sky-400);">
+              🔊 Explication audio du Xylème
+            </button>
+          </div>
+
+          <div class="card-body">
+            <div class="grid-12">
+              
+              <!-- Plant Visual Stage -->
+              <div class="col-7 plant-canvas">
+                <!-- Weather Top Bar -->
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <span id="sun-icon" style="font-size: 1.75rem;">☀️</span>
+                    <div>
+                      <span id="sun-status" style="font-size: 0.75rem; font-weight: 700; color: #fff; display: block;">Soleil Radieux</span>
+                      <span style="font-size: 0.6875rem; color: var(--text-secondary);">Transpiration foliaire active</span>
+                    </div>
+                  </div>
+                  <button onclick="toggleSun()" class="btn btn-slate btn-sm">
+                    Changer la météo
+                  </button>
+                </div>
+
+                <!-- Plant & Stem Diagram -->
+                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 1rem 0;">
+                  <!-- Leaves -->
+                  <div style="display: flex; gap: 1.5rem; align-items: center;">
+                    <div style="width: 4rem; height: 2rem; background: var(--emerald-600); border-radius: 0 1.5rem 0 1.5rem; border: 1px solid var(--emerald-500); transform: rotate(-12deg); display: flex; align-items: center; justify-content: center; font-size: 0.6875rem; color: #fff; font-weight: 700;">
+                      Feuille 🍃
+                    </div>
+                    <div style="width: 4rem; height: 2rem; background: var(--emerald-600); border-radius: 1.5rem 0 1.5rem 0; border: 1px solid var(--emerald-500); transform: rotate(12deg); display: flex; align-items: center; justify-content: center; font-size: 0.6875rem; color: #fff; font-weight: 700;">
+                      Feuille 🍃
+                    </div>
+                  </div>
+
+                  <!-- Stem with internal micro-straws -->
+                  <div style="width: 6.5rem; height: 12rem; background: rgba(5, 150, 105, 0.15); border-left: 2px solid var(--emerald-500); border-right: 2px solid var(--emerald-500); margin: 0.25rem 0; position: relative; display: flex; justify-content: space-around; padding: 0 0.5rem; align-items: center; overflow: hidden;">
+                    <!-- Straw 1 -->
+                    <div style="position: relative; width: 0.75rem; height: 100%; background: rgba(2, 132, 199, 0.25); border-left: 1px solid var(--sky-500); border-right: 1px solid var(--sky-500); overflow: hidden;">
+                      <div class="bubble-1" style="position: absolute; width: 0.6rem; height: 0.6rem; background: var(--sky-400); border-radius: 9999px;"></div>
+                    </div>
+                    <!-- Straw 2 -->
+                    <div style="position: relative; width: 0.75rem; height: 100%; background: rgba(2, 132, 199, 0.25); border-left: 1px solid var(--sky-500); border-right: 1px solid var(--sky-500); overflow: hidden;">
+                      <div class="bubble-2" style="position: absolute; width: 0.6rem; height: 0.6rem; background: var(--sky-400); border-radius: 9999px;"></div>
+                    </div>
+                    <!-- Straw 3 -->
+                    <div style="position: relative; width: 0.75rem; height: 100%; background: rgba(2, 132, 199, 0.25); border-left: 1px solid var(--sky-500); border-right: 1px solid var(--sky-500); overflow: hidden;">
+                      <div class="bubble-3" style="position: absolute; width: 0.6rem; height: 0.6rem; background: var(--sky-400); border-radius: 9999px;"></div>
+                    </div>
+                    <!-- Xylem Badge -->
+                    <div style="position: absolute; background: rgba(12, 22, 34, 0.9); border: 1px solid var(--sky-500); color: var(--sky-300); font-family: monospace; font-size: 0.6875rem; padding: 0.15rem 0.5rem; border-radius: 0.25rem;">
+                      ▲ XYLÈME ▲
+                    </div>
+                  </div>
+
+                  <!-- Roots -->
+                  <div style="display: flex; flex-direction: column; align-items: center;">
+                    <div style="width: 10rem; height: 3px; background: #92400e; border-radius: 9999px;"></div>
+                    <div style="font-size: 0.75rem; font-weight: 700; color: var(--amber-400); margin-top: 0.35rem;">
+                      Racines & Poils Absorbants (Puisent l'eau)
+                    </div>
+                  </div>
+                </div>
+
+                <div style="background: rgba(12, 22, 34, 0.85); padding: 0.5rem; border-radius: 0.5rem; border: 1px solid var(--border-color); text-align: center; font-size: 0.75rem; color: #cbd5e1;">
+                  💧 Les molécules d'eau montent en continu dans le xylème grâce à la capillarité et à l'aspiration des feuilles !
+                </div>
+              </div>
+
+              <!-- Microscope and Breakdown -->
+              <div class="col-5" style="display: flex; flex-direction: column; justify-content: space-between; gap: 1rem;">
+                <!-- Microscope SVG -->
+                <div style="background: #040911; border-radius: 0.75rem; padding: 1rem; border: 1px solid var(--border-color); text-align: center;">
+                  <span style="font-size: 0.6875rem; font-family: monospace; color: var(--sky-400); display: block; margin-bottom: 0.5rem;">
+                    Microscope Botanique · Coupe de Tige
+                  </span>
+                  <svg viewBox="0 0 200 120" style="width: 100%; max-width: 220px; height: 110px; margin: 0 auto; display: block;">
+                    <circle cx="100" cy="60" r="50" fill="#042013" stroke="#10b981" stroke-width="2"/>
+                    <circle cx="100" cy="60" r="42" fill="#02140c" stroke="#34d399" stroke-dasharray="2" stroke-width="1"/>
+                    <g fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+                      <circle cx="100" cy="24" r="6"/>
+                      <circle cx="100" cy="96" r="6"/>
+                      <circle cx="64" cy="60" r="6"/>
+                      <circle cx="136" cy="60" r="6"/>
+                      <circle cx="74" cy="34" r="6"/>
+                      <circle cx="126" cy="34" r="6"/>
+                      <circle cx="74" cy="86" r="6"/>
+                      <circle cx="126" cy="86" r="6"/>
+                    </g>
+                    <circle cx="100" cy="60" r="16" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+                    <text x="100" y="63" text-anchor="middle" font-size="8" fill="#cbd5e1">Moelle</text>
+                  </svg>
+                  <p style="font-size: 0.75rem; color: var(--sky-300); margin-top: 0.4rem;">
+                    Chaque cercle bleu est un paquet de pailles microscopiques : le <strong>xylème</strong> !
+                  </p>
+                </div>
+
+                <!-- 3 Steps -->
+                <div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.75rem;">
+                  <div style="background: var(--bg-card-sub); padding: 0.6rem; border-radius: 0.5rem; border: 1px solid var(--border-color);">
+                    <strong style="color: #fff; display: block;">1. L'absorption racinaire</strong>
+                    <span style="color: var(--text-secondary);">L'eau et les minéraux sont absorbés par les racines dans le sol.</span>
+                  </div>
+                  <div style="background: rgba(8, 47, 73, 0.4); padding: 0.6rem; border-radius: 0.5rem; border: 1px solid rgba(2, 132, 199, 0.4);">
+                    <strong style="color: var(--sky-400); display: block;">2. La montée par Capillarité</strong>
+                    <span style="color: #cbd5e1;">L'eau monte toute seule dans les tubes très fins du <strong>xylème</strong>.</span>
+                  </div>
+                  <div style="background: rgba(69, 26, 3, 0.4); padding: 0.6rem; border-radius: 0.5rem; border: 1px solid rgba(245, 158, 11, 0.4);">
+                    <strong style="color: var(--amber-400); display: block;">3. L'aspiration des feuilles</strong>
+                    <span style="color: #cbd5e1;">L'eau qui s'évapore au soleil tire toute la colonne d'eau vers le ciel !</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: EXPÉRIENCE DU CÉLERI -->
+      <section id="section-celeri" class="tab-section">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <span class="card-header-badge" style="color: var(--rose-500);">Laboratoire Virtuel · Expérience Facile</span>
+              <h2 class="card-header-title">L'Expérience du Céleri et de la Fleur Magique</h2>
+              <p class="card-header-desc">Rends le xylème et la capillarité visibles à l'œil nu grâce à du colorant alimentaire !</p>
+            </div>
+            <div style="font-size: 0.75rem; font-weight: 600; background: rgba(76,5,25,0.6); color: #fecdd3; padding: 0.35rem 0.75rem; border-radius: 0.5rem; border: 1px solid rgba(225,29,72,0.4);">
+              🧪 À faire à la maison ou à l'école !
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="grid-12">
+              
+              <div class="col-7" style="display: flex; flex-direction: column; gap: 1rem;">
+                <div style="background: #040911; border-radius: 0.75rem; padding: 1.5rem; border: 1px solid var(--border-color); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 250px;">
+                  <svg viewBox="0 0 280 180" style="width: 100%; max-width: 280px; height: 160px;">
+                    <!-- Beaker -->
+                    <path d="M 90 40 L 90 140 Q 90 160 110 160 L 170 160 Q 190 160 190 140 L 190 40" fill="#0f172a" fill-opacity="0.6" stroke="#64748b" stroke-width="2.5"/>
+                    <path d="M 92 110 L 92 140 Q 92 158 110 158 L 170 158 Q 188 158 188 140 L 188 110 Z" id="celery-liquid" fill="#0284c7" opacity="0.9"/>
+                    <!-- Celery Stalk -->
+                    <path d="M 125 150 L 130 30 Q 140 10 150 30 L 155 150" fill="#065f46" stroke="#10b981" stroke-width="2"/>
+                    <line x1="135" y1="150" x2="137" y2="40" id="celery-vein-1" stroke="#38bdf8" stroke-width="2.5" stroke-dasharray="200" stroke-dashoffset="130"/>
+                    <line x1="145" y1="150" x2="147" y2="40" id="celery-vein-2" stroke="#38bdf8" stroke-width="2.5" stroke-dasharray="200" stroke-dashoffset="130"/>
+                    <!-- Leaves -->
+                    <circle cx="132" cy="22" r="14" id="celery-leaf-1" fill="#34d399"/>
+                    <circle cx="152" cy="22" r="14" id="celery-leaf-2" fill="#34d399"/>
+                  </svg>
+                  <div style="margin-top: 0.5rem; font-size: 0.75rem; font-family: monospace; font-weight: 700; background: #0c1622; padding: 0.25rem 0.75rem; border-radius: 9999px; border: 1px solid var(--border-color);">
+                    <span id="timelapse-hours-badge">Temps écoulé : 2 heures</span>
+                  </div>
+                </div>
+
+                <!-- Time-Lapse Buttons -->
+                <div class="timelapse-grid">
+                  <button onclick="setTimelapse(0)" class="tl-btn" data-hour="0">0h (Départ)</button>
+                  <button onclick="setTimelapse(2)" class="tl-btn active" data-hour="2">2h</button>
+                  <button onclick="setTimelapse(8)" class="tl-btn" data-hour="8">8h</button>
+                  <button onclick="setTimelapse(24)" class="tl-btn" data-hour="24">24h (Fin)</button>
+                </div>
+
+                <div style="background: var(--bg-card-sub); padding: 0.85rem; border-radius: 0.5rem; border: 1px solid var(--border-color); font-size: 0.75rem;">
+                  <h4 id="tl-title" style="font-weight: 700; color: #fff; margin-bottom: 0.25rem;">Heure 2 : La capillarité démarre</h4>
+                  <p id="tl-desc" style="color: var(--text-secondary);">L'eau colorée monte dans les minuscules pailles du xylème le long de la branche de céleri.</p>
+                </div>
+              </div>
+
+              <!-- Recipe Box -->
+              <div class="col-5" style="background: var(--bg-card-sub); padding: 1.25rem; border-radius: 0.75rem; border: 1px solid var(--border-color); font-size: 0.75rem; display: flex; flex-direction: column; gap: 0.75rem;">
+                <h4 style="font-weight: 700; color: #fff; font-size: 0.875rem;">
+                  📋 Protocole de l'expérience facile :
+                </h4>
+                <ol style="padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; color: #cbd5e1; line-height: 1.4;">
+                  <li>Prends un verre d'eau et ajoute 15 gouttes de colorant alimentaire (bleu ou rouge).</li>
+                  <li>Prends une branche fraîche de céleri avec ses feuilles, ou un œillet blanc.</li>
+                  <li>Coupe le bas de la tige pour bien ouvrir les vaisseaux du xylème.</li>
+                  <li>Mets la tige dans le verre et observe au fil des heures !</li>
+                </ol>
+                <div style="background: rgba(2, 44, 34, 0.4); padding: 0.65rem; border-radius: 0.5rem; border: 1px solid rgba(5,150,105,0.4); color: var(--emerald-400); font-weight: 500;">
+                  💡 <strong>Astuce :</strong> Si tu coupes une tranche de céleri coloré, tu verras un demi-cercle de petits points de couleur : c'est la coupe des pailles du xylème !
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 5: GRAND QUIZ & DIPLÔME -->
+      <section id="section-quiz" class="tab-section">
+        <div class="card" style="border-color: rgba(245, 158, 11, 0.3);">
+          <div class="card-header" style="background: rgba(69, 26, 3, 0.2);">
+            <div>
+              <span class="card-header-badge" style="color: var(--amber-400);">Validation des Connaissances · Professeure Flora</span>
+              <h2 class="card-header-title">Le Grand Défi Scientifique Eco2Nature</h2>
+              <p class="card-header-desc">Vérifie que tu as bien retenu le mot magique de la science pour remporter ton Diplôme officiel !</p>
+            </div>
+            <div id="quiz-progress-badge" style="font-size: 0.75rem; font-family: monospace; font-weight: 700; background: #0c1622; color: var(--amber-400); padding: 0.35rem 0.75rem; border-radius: 0.5rem; border: 1px solid rgba(245, 158, 11, 0.4);">
+              Question 1 / 3
+            </div>
+          </div>
+
+          <div class="card-body">
+            <!-- Question Box -->
+            <div id="quiz-question-box" style="max-w: 640px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem;">
+              <div>
+                <div class="badge-pill" style="background: rgba(69, 26, 3, 0.6); color: var(--amber-400); border: 1px solid rgba(245, 158, 11, 0.5); margin-bottom: 0.5rem;">
+                  ✨ Question de validation de Flora
+                </div>
+                <h3 id="quiz-question-text" style="font-size: 1.25rem; font-weight: 700; color: #fff; line-height: 1.3;">
+                  Quel est le mot magique de la science qui désigne la capacité de l'eau à grimper toute seule dans de minuscules tuyaux très fins ?
+                </h3>
+              </div>
+
+              <!-- Options -->
+              <div id="quiz-options-container" style="display: flex; flex-direction: column; gap: 0.75rem;"></div>
+
+              <!-- Feedback -->
+              <div id="quiz-feedback-box" style="display: none; padding: 1rem; border-radius: 0.75rem; font-size: 0.875rem; line-height: 1.5; border: 1px solid transparent;"></div>
+
+              <!-- Buttons -->
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
+                <span id="quiz-hint-text" style="font-size: 0.75rem; color: var(--text-muted);">
+                  Indice de Flora : C'est le mot clé du tout début !
+                </span>
+                <button id="quiz-validate-btn" onclick="validateCurrentAnswer()" class="btn btn-amber">
+                  Valider ma réponse
+                </button>
+                <button id="quiz-next-btn" onclick="nextQuestion()" class="btn btn-emerald" style="display: none;">
+                  Question suivante →
+                </button>
+              </div>
+            </div>
+
+            <!-- Diploma Box -->
+            <div id="quiz-diploma-box" style="display: none; max-width: 580px; margin: 0 auto;">
+              <div id="diploma-card">
+                <div class="diploma-ribbon">🎓</div>
+                <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--emerald-400); display: block;">
+                  Laboratoire Scientifique Eco2Nature
+                </span>
+                <h3 class="diploma-title font-display">Diplôme de Jeune Botaniste</h3>
+                <p style="font-size: 0.75rem; color: var(--text-secondary);">Attribué avec les félicitations de la Professeure Flora</p>
+
+                <div style="margin: 1.25rem 0; padding: 0.75rem 0; border-top: 1px solid rgba(245, 158, 11, 0.4); border-bottom: 1px solid rgba(245, 158, 11, 0.4);">
+                  <p style="font-size: 0.75rem; color: #cbd5e1;">Ce diplôme d'excellence est décerné à :</p>
+                  <input type="text" id="child-name-input" value="Alex" class="child-name-input" placeholder="Ton prénom" title="Clique pour modifier le prénom">
+                </div>
+
+                <p style="font-size: 0.8rem; color: #cbd5e1; line-height: 1.5; padding: 0 0.5rem;">
+                  Pour avoir brillamment maîtrisé le mot magique de la science : <strong style="color: var(--emerald-400);">La Capillarité</strong>, ainsi que le réseau de pailles microscopiques : <strong style="color: var(--sky-400);">Le Xylème</strong> !
+                </p>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 1rem; margin-top: 1rem; font-size: 0.75rem; text-align: left;">
+                  <div>
+                    <span style="font-weight: 700; color: #fff; display: block;">Professeure Flora</span>
+                    <span style="color: var(--text-muted); font-size: 0.6875rem;">Directrice Eco2Nature</span>
+                  </div>
+                  <div style="background: rgba(69, 26, 3, 0.8); color: var(--amber-400); font-family: monospace; font-weight: 700; font-size: 0.6875rem; padding: 0.35rem 0.75rem; border-radius: 9999px; border: 1px solid rgba(245, 158, 11, 0.4);">
+                    Sceau Officiel Eco2Nature
+                  </div>
+                </div>
+              </div>
+
+              <div class="no-print" style="margin-top: 1.5rem; display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
+                <button onclick="window.print()" class="btn btn-amber btn-sm">
+                  <span>🖨️ Imprimer mon Diplôme</span>
+                </button>
+                <button onclick="restartQuiz()" class="btn btn-slate btn-sm">
+                  <span>🔄 Recommencer le Quiz</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container footer-inner">
+        <div>
+          <strong style="color: var(--emerald-400);">Laboratoire Scientifique Eco2Nature</strong> · 
+          <span>Professeure Flora</span> · 
+          <span>La Capillarité & le Xylème</span>
+        </div>
+        <div>
+          <span>Fichier unique autonome HTML+CSS+JS sans dépendances</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- CODE JAVASCRIPT INTÉGRAL AUTONOME DANS LA BALISE <script> -->
+    <script>
+      // 1. Synthétiseur Audio Web Audio API (effets sonores sans fichier audio externe)
+      let audioCtx = null;
+      function playTone(freq, duration, type) {
+        try {
+          if (!audioCtx) {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+          }
+          if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+          }
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          const now = audioCtx.currentTime;
+          osc.type = type || 'sine';
+          osc.frequency.setValueAtTime(freq, now);
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + duration);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(now);
+          osc.stop(now + duration);
+        } catch (e) {}
+      }
+
+      function playWaterDrop() {
+        playTone(650, 0.12, 'sine');
+      }
+
+      function playSuccessChime() {
+        [523.25, 659.25, 783.99, 1046.5].forEach((freq, idx) => {
+          setTimeout(() => playTone(freq, 0.25, 'triangle'), idx * 80);
+        });
+      }
+
+      // 2. Synthèse Vocale Web Speech API
+      let isSpeaking = false;
+      function speakText(text) {
+        if (!('speechSynthesis' in window)) return;
+        window.speechSynthesis.cancel();
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.lang = 'fr-FR';
+        utter.rate = 0.95;
+        const voices = window.speechSynthesis.getVoices();
+        const frenchVoice = voices.find(v => v.lang && v.lang.startsWith('fr'));
+        if (frenchVoice) utter.voice = frenchVoice;
+
+        utter.onstart = () => updateVoiceBtn(true);
+        utter.onend = () => updateVoiceBtn(false);
+        utter.onerror = () => updateVoiceBtn(false);
+        window.speechSynthesis.speak(utter);
+      }
+
+      function updateVoiceBtn(speaking) {
+        isSpeaking = speaking;
+        const btn = document.getElementById('voice-btn');
+        const icon = document.getElementById('voice-icon');
+        const txt = document.getElementById('voice-text');
+        if (speaking) {
+          btn.className = 'btn btn-amber btn-sm';
+          icon.textContent = '⏹️';
+          txt.textContent = 'Stop Voix';
+        } else {
+          btn.className = 'btn btn-emerald btn-sm';
+          icon.textContent = '🔊';
+          txt.textContent = 'Écouter Flora';
+        }
+      }
+
+      function toggleVoice() {
+        if (isSpeaking) {
+          window.speechSynthesis.cancel();
+          updateVoiceBtn(false);
+        } else {
+          readIntroSpeech();
+        }
+      }
+
+      function readIntroSpeech() {
+        playWaterDrop();
+        speakText("Bonjour jeune curieux ! Bienvenue dans le Laboratoire Scientifique Eco2Nature ! Je suis la Professeure Flora. L'eau monte dans les plantes grâce à un mot magique : la capillarité ! La capillarité, c'est la capacité de l'eau à monter toute seule dans de minuscules tuyaux très fins. Dans la tige, ces tuyaux sont comme des pailles microscopiques invisibles : c'est le xylème !");
+      }
+
+      function readXylemSpeech() {
+        playWaterDrop();
+        speakText("Regarde bien cette coupe de tige au microscope ! Les petits tuyaux bleus forment le xylème. Ce sont des millions de pailles microscopiques très serrées qui conduisent l'eau des racines jusqu'aux feuilles !");
+      }
+
+      // 3. Navigation par onglets
+      function switchTab(tabId) {
+        playWaterDrop();
+        const sections = ['explication', 'simulation', 'xyleme', 'celeri', 'quiz'];
+        sections.forEach(s => {
+          const secEl = document.getElementById('section-' + s);
+          if (secEl && s === tabId) {
+            secEl.scrollIntoView({ behavior: 'smooth' });
+          }
+          const navBtn = document.getElementById('nav-' + s);
+          if (navBtn) {
+            if (s === tabId) {
+              navBtn.classList.add('active');
+            } else {
+              navBtn.classList.remove('active');
+            }
+          }
+          const mobBtn = document.querySelector(`.mobile-tab-btn[data-target="${s}"]`);
+          if (mobBtn) {
+            if (s === tabId) {
+              mobBtn.classList.add('active');
+            } else {
+              mobBtn.classList.remove('active');
+            }
+          }
+        });
+      }
+
+      // 4. Banc d'essai des tubes capillaires
+      let isDipped = true;
+      let currentColor = '#0284c7';
+      let currentDiameter = 0.25;
+
+      function toggleDippedState() {
+        playWaterDrop();
+        isDipped = !isDipped;
+        const btn = document.getElementById('dip-toggle-btn');
+        btn.textContent = isDipped ? "🔄 Retirer les tubes de l'eau" : "🔄 Plonger les tubes dans l'eau";
+        renderTubes();
+      }
+
+      function changeColor(hex, name) {
+        playWaterDrop();
+        currentColor = hex;
+        document.getElementById('liquid-basin').style.backgroundColor = hex;
+        document.getElementById('celery-liquid').setAttribute('fill', hex);
+        document.getElementById('celery-vein-1').setAttribute('stroke', hex);
+        document.getElementById('celery-vein-2').setAttribute('stroke', hex);
+        renderTubes();
+      }
+
+      function updateDiameter(val) {
+        currentDiameter = parseFloat(val);
+        document.getElementById('dia-badge').textContent = currentDiameter.toFixed(2) + ' mm';
+        document.getElementById('title-tube-custom').textContent = 'Micro-paille (' + currentDiameter.toFixed(2) + ' mm)';
+        document.getElementById('container-tube-custom').style.width = Math.max(currentDiameter * 12, 3) + 'px';
+        renderTubes();
+      }
+
+      function renderTubes() {
+        const col1 = document.getElementById('col-tube-1');
+        const col2 = document.getElementById('col-tube-2');
+        const col3 = document.getElementById('col-tube-3');
+        const colCustom = document.getElementById('col-tube-custom');
+
+        [col1, col2, col3, colCustom].forEach(el => el.style.backgroundColor = currentColor);
+
+        if (!isDipped) {
+          col1.style.height = '0%';
+          col2.style.height = '0%';
+          col3.style.height = '0%';
+          colCustom.style.height = '0%';
+          document.getElementById('label-tube-1').textContent = 'Vide';
+          document.getElementById('label-tube-2').textContent = 'Vide';
+          document.getElementById('label-tube-3').textContent = 'Vide';
+          document.getElementById('label-tube-custom').textContent = 'Vide';
+        } else {
+          col1.style.height = '12%';
+          col2.style.height = '28%';
+          col3.style.height = '65%';
+          document.getElementById('label-tube-1').textContent = 'h ≈ 0.6 cm';
+          document.getElementById('label-tube-2').textContent = 'h ≈ 1.5 cm';
+          document.getElementById('label-tube-3').textContent = 'h ≈ 5.6 cm';
+
+          const customHeightPercent = Math.min(Math.max(28 / currentDiameter, 10), 96);
+          colCustom.style.height = customHeightPercent + '%';
+          document.getElementById('label-tube-custom').textContent = 'h ≈ ' + (28 / currentDiameter / 10).toFixed(1) + ' cm';
+        }
+      }
+
+      // 5. Météo et soleil
+      let isBrightSun = true;
+      function toggleSun() {
+        playWaterDrop();
+        isBrightSun = !isBrightSun;
+        document.getElementById('sun-icon').textContent = isBrightSun ? '☀️' : '⛅';
+        document.getElementById('sun-status').textContent = isBrightSun ? 'Soleil Radieux' : 'Soleil Voilé';
+      }
+
+      // 6. Time-lapse du Céleri
+      const timelapseData = {
+        0: { title: "Heure 0 : Le début de l'expérience", desc: "La branche de céleri est plongée dans l'eau colorée. Les vaisseaux du xylème touchent le colorant.", offset: 190, leafColor: "#34d399" },
+        2: { title: "Heure 2 : La capillarité démarre", desc: "L'eau colorée monte dans les pailles du xylème le long de la tige par capillarité.", offset: 130, leafColor: "#34d399" },
+        8: { title: "Heure 8 : L'eau atteint les nervures", desc: "La sève brute colorée se ramifie dans les nervures des feuilles de céleri.", offset: 60, leafColor: "#38bdf8" },
+        24: { title: "Heure 24 : Le chef-d'œuvre végétal", desc: "Toutes les feuilles sont joliment teintées ! La capillarité a fait monter l'eau jusqu'au sommet !", offset: 0, leafColor: "#0284c7" }
+      };
+
+      function setTimelapse(hour) {
+        playWaterDrop();
+        const data = timelapseData[hour];
+        document.getElementById('timelapse-hours-badge').textContent = 'Temps écoulé : ' + hour + ' heures';
+        document.getElementById('tl-title').textContent = data.title;
+        document.getElementById('tl-desc').textContent = data.desc;
+
+        document.getElementById('celery-vein-1').setAttribute('stroke-dashoffset', data.offset);
+        document.getElementById('celery-vein-2').setAttribute('stroke-dashoffset', data.offset);
+        document.getElementById('celery-leaf-1').setAttribute('fill', data.leafColor);
+        document.getElementById('celery-leaf-2').setAttribute('fill', data.leafColor);
+
+        document.querySelectorAll('.tl-btn').forEach(btn => {
+          if (parseInt(btn.getAttribute('data-hour')) === hour) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+      }
+
+      // 7. Moteur de Quiz
+      const quizQuestions = [
+        {
+          question: "Quel est le mot magique de la science qui désigne la capacité de l'eau à grimper toute seule dans de minuscules tuyaux très fins ?",
+          hint: "Professeure Flora en a parlé au tout début !",
+          options: [
+            { text: "La photosynthèse", isCorrect: false, explanation: "Non, la photosynthèse permet à la plante de fabriquer son énergie grâce au soleil." },
+            { text: "La capillarité", isCorrect: true, explanation: "Bravo ! C'est la capillarité ! La force qui fait grimper l'eau dans les tuyaux ultra-fins !" },
+            { text: "La gravité inversée", isCorrect: false, explanation: "Non, la gravité attire toujours vers le sol." },
+            { text: "L'évaporation", isCorrect: false, explanation: "L'évaporation a lieu au niveau des feuilles, mais ce n'est pas le mot pour la montée dans les tuyaux." }
+          ]
+        },
+        {
+          question: "Dans la tige de la plante, à quoi compare-t-on les vaisseaux invisibles du xylème pour bien visualiser le phénomène ?",
+          hint: "Pense à ce que tu utilises pour boire un jus de fruit !",
+          options: [
+            { text: "À des ballons de baudruche", isCorrect: false, explanation: "Non, ce ne sont pas des ballons." },
+            { text: "À des pailles microscopiques", isCorrect: true, explanation: "Excellent ! Le xylème est un paquet de millions de pailles microscopiques !" },
+            { text: "À de gros seaux d'eau lourds", isCorrect: false, explanation: "Non, les plantes sont bien plus fines et légères !" }
+          ]
+        },
+        {
+          question: "Dans quel type de tuyau la force de capillarité fait-elle monter l'eau le plus haut ?",
+          hint: "Rappelle-toi du banc d'essai dans le laboratoire !",
+          options: [
+            { text: "Dans un très gros tuyau d'arrosage", isCorrect: false, explanation: "Dans un gros tuyau, l'eau est trop lourde et monte à peine." },
+            { text: "Dans un tuyau ultra-fin et microscopique", isCorrect: true, explanation: "Parfait ! Plus le tuyau est fin, plus l'eau monte haut !" },
+            { text: "L'eau monte toujours à la même hauteur", isCorrect: false, explanation: "Non, la finesse du tube change tout !" }
+          ]
+        }
+      ];
+
+      let currentQuizIndex = 0;
+      let selectedOptionIndex = null;
+      let hasValidatedCurrent = false;
+
+      function renderQuiz() {
+        const q = quizQuestions[currentQuizIndex];
+        document.getElementById('quiz-progress-badge').textContent = 'Question ' + (currentQuizIndex + 1) + ' / ' + quizQuestions.length;
+        document.getElementById('quiz-question-text').textContent = q.question;
+        document.getElementById('quiz-hint-text').textContent = 'Indice de Flora : ' + q.hint;
+
+        const container = document.getElementById('quiz-options-container');
+        container.innerHTML = '';
+        selectedOptionIndex = null;
+        hasValidatedCurrent = false;
+
+        const fb = document.getElementById('quiz-feedback-box');
+        fb.style.display = 'none';
+        document.getElementById('quiz-validate-btn').style.display = 'inline-flex';
+        document.getElementById('quiz-next-btn').style.display = 'none';
+
+        q.options.forEach((opt, idx) => {
+          const btn = document.createElement('button');
+          btn.className = 'quiz-option-btn';
+          btn.innerHTML = `<span style="display:flex;align-items:center;gap:0.75rem;"><span class="opt-letter">${String.fromCharCode(65 + idx)}</span><span>${opt.text}</span></span><span id="opt-icon-${idx}"></span>`;
+          btn.onclick = () => selectQuizOption(idx);
+          btn.id = 'quiz-opt-' + idx;
+          container.appendChild(btn);
+        });
+      }
+
+      function selectQuizOption(idx) {
+        if (hasValidatedCurrent) return;
+        selectedOptionIndex = idx;
+        const q = quizQuestions[currentQuizIndex];
+        q.options.forEach((_, i) => {
+          const btn = document.getElementById('quiz-opt-' + i);
+          if (i === idx) {
+            btn.className = 'quiz-option-btn selected';
+          } else {
+            btn.className = 'quiz-option-btn';
+          }
+        });
+      }
+
+      function validateCurrentAnswer() {
+        if (selectedOptionIndex === null) {
+          alert("Choisis une réponse en cliquant dessus avant de valider !");
+          return;
+        }
+        hasValidatedCurrent = true;
+        const q = quizQuestions[currentQuizIndex];
+        const chosen = q.options[selectedOptionIndex];
+
+        const feedbackBox = document.getElementById('quiz-feedback-box');
+        feedbackBox.style.display = 'block';
+
+        if (chosen.isCorrect) {
+          playSuccessChime();
+          feedbackBox.style.backgroundColor = 'rgba(2, 44, 34, 0.7)';
+          feedbackBox.style.borderColor = 'var(--emerald-500)';
+          feedbackBox.style.color = '#a7f3d0';
+          feedbackBox.innerHTML = `<strong>✨ Bravo !</strong> ${chosen.explanation}`;
+          document.getElementById('quiz-opt-' + selectedOptionIndex).className = 'quiz-option-btn correct';
+          document.getElementById('opt-icon-' + selectedOptionIndex).textContent = '✅';
+          speakText("Bravo ! " + chosen.explanation);
+        } else {
+          playWaterDrop();
+          feedbackBox.style.backgroundColor = 'rgba(76, 5, 25, 0.7)';
+          feedbackBox.style.borderColor = 'var(--rose-500)';
+          feedbackBox.style.color = '#fecdd3';
+          feedbackBox.innerHTML = `<strong>Ce n'est pas tout à fait ça :</strong> ${chosen.explanation}`;
+          document.getElementById('quiz-opt-' + selectedOptionIndex).className = 'quiz-option-btn incorrect';
+          document.getElementById('opt-icon-' + selectedOptionIndex).textContent = '❌';
+        }
+
+        document.getElementById('quiz-validate-btn').style.display = 'none';
+        const nextBtn = document.getElementById('quiz-next-btn');
+        nextBtn.style.display = 'inline-flex';
+        nextBtn.textContent = (currentQuizIndex < quizQuestions.length - 1) ? 'Question suivante →' : 'Découvrir mon Diplôme 🎓';
+      }
+
+      function nextQuestion() {
+        if (currentQuizIndex < quizQuestions.length - 1) {
+          currentQuizIndex++;
+          renderQuiz();
+        } else {
+          showDiploma();
+        }
+      }
+
+      function showDiploma() {
+        playSuccessChime();
+        document.getElementById('quiz-question-box').style.display = 'none';
+        document.getElementById('quiz-diploma-box').style.display = 'block';
+        const childName = document.getElementById('child-name-input').value || 'Alex';
+        speakText(`Félicitations ${childName} ! Tu as brillamment réussi le test de la Professeure Flora. Tu es maintenant officiellement Jeune Botaniste du Laboratoire Eco2Nature !`);
+      }
+
+      function restartQuiz() {
+        currentQuizIndex = 0;
+        document.getElementById('quiz-diploma-box').style.display = 'none';
+        document.getElementById('quiz-question-box').style.display = 'flex';
+        renderQuiz();
+      }
+
+      // 8. Téléchargement autonome
+      function downloadSelf() {
+        const htmlContent = "<!doctype html>\n" + document.documentElement.outerHTML;
+        const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'Laboratoire_Eco2Nature_Professeure_Flora.html';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      }
+
+      // Initialisation
+      window.addEventListener('DOMContentLoaded', () => {
+        renderTubes();
+        renderQuiz();
+      });
+    </script>
+  </body>
+</html>
